@@ -71,6 +71,9 @@ Battery.onHasSubscribersChange = function () {
 Battery.prototype._status = function (info) {
 
     if (info) {
+        battery._level = info.level;
+        battery._isPlugged = info.isPlugged;
+        cordova.fireWindowEvent('batterystatus', info);
         if (battery._level !== info.level || battery._isPlugged !== info.isPlugged) {
 
             if (info.level === null && battery._level !== null) {

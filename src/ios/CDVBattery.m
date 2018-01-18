@@ -122,8 +122,6 @@
     }
     self.callbackId = nil;
     [[UIDevice currentDevice] setBatteryMonitoringEnabled:NO];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceBatteryStateDidChangeNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceBatteryLevelDidChangeNotification object:nil];
 }
 
 - (void)pluginInitialize

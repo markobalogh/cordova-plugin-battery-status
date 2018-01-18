@@ -57,7 +57,7 @@
 }
  */
 
-- (void)updateBatteryStatus:(NSNotification*)notification
+- (void)updateBatteryStatus
 {
     NSDictionary* batteryData = [self getBatteryStatus];
 
@@ -107,11 +107,8 @@
 
     if ([UIDevice currentDevice].batteryMonitoringEnabled == NO) {
         [[UIDevice currentDevice] setBatteryMonitoringEnabled:YES];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateBatteryStatus:)
-                                                     name:UIDeviceBatteryStateDidChangeNotification object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateBatteryStatus:)
-                                                     name:UIDeviceBatteryLevelDidChangeNotification object:nil];
     }
+    [self updateBatteryStatus];
 }
 
 /* turn off battery monitoring */
